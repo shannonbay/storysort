@@ -1,4 +1,4 @@
-from storysort.storysort import fib
+from storysort.storysort import fib, is_sorted, story_sort
 
 
 def test_fib() -> None:
@@ -9,3 +9,8 @@ def test_fib() -> None:
     assert fib(4) == 3
     assert fib(5) == 5
     assert fib(10) == 55
+
+
+def test_story_sort() -> None:
+    assert is_sorted(story_sort([4, 1, 7, 2, 9, 3]))
+    assert not is_sorted([4, 1, 7, 2, 9, 3])
