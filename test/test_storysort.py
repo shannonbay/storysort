@@ -17,4 +17,6 @@ def test_story_sort() -> None:
 
 
 def test_generate_run_array() -> None:
-    print(generate_run_array([4, 1, 7, 2, 9, 3]))
+    run_array, run_start_idx = generate_run_array([4, 1, 7, 2, 9, 3])
+    assert run_array == [2, 0, 4, 5, -1, -1]
+    assert run_start_idx == [1, 3]

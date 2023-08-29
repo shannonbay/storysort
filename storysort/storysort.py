@@ -39,6 +39,10 @@ def story_sort(arr):
     return result
 
 
+def key_function(x):
+    return -x
+
+
 def generate_run_array(input_array):
     run_array = [-1] * len(
         input_array
@@ -49,8 +53,6 @@ def generate_run_array(input_array):
     run_mins = [input_array[0]]
     run_indexes = [0]  # Keeps track of the current index for each run
     run_start_idx = [0]
-
-    key_function = lambda x: -x
 
     # For each input value
     for i, value in enumerate(input_array[1:], start=1):
@@ -64,7 +66,6 @@ def generate_run_array(input_array):
             run_array[run_indexes[j]] = i  # run array for run j now points to i
             run_indexes[j] = i  # i is now the latest index in run j
             found = True
-            break
 
         if not found:
             # For each established run
@@ -80,7 +81,6 @@ def generate_run_array(input_array):
                     ]  # This value will point to the old start
                     run_start_idx[j] = i  # this is the new start idx for the run
                     found = True
-                    break
 
         if not found:
             # handle case where value is less than existing run maxes
