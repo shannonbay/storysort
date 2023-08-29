@@ -7,7 +7,7 @@ Python 3.10
 ## Setup
 ```sh
 # Install dependencies
-pipenv install --dev
+pipenv --python 3.10 install --dev
 
 # Setup pre-commit and pre-push hooks
 pipenv run pre-commit install -t pre-commit
