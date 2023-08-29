@@ -15,8 +15,8 @@ if __name__ == "__main__":
     print(sorted_array)  # Output: [1, 2, 3, 4, 7, 9]
     print("Finished story sort")
 
-    random_array = np.random.randint(low=1, high=100000, size=100000)
-    print(random_array[1:50])
+    random_array = np.random.randint(low=1, high=100000, size=10000000)
+    print(random_array[1:5])
 
     pre_sorted_array = sorted(random_array)
     reverse_sorted_array = sorted(random_array, reverse=True)
@@ -24,11 +24,11 @@ if __name__ == "__main__":
     print("Finished generating data - starting story_sort")
     for array in [random_array]:  # , pre_sorted_array, reverse_sorted_array]:
         start_time = time.time()
-        array_sorted = story_sort(array)
+        array_sorted = generate_run_array(array)
         elapsed_time = time.time() - start_time
         print("StorySort time: {:.2f} seconds".format(elapsed_time))
-        assert is_sorted(array_sorted)
-        print(array_sorted[1:50])
+        #        assert is_sorted(array_sorted)
+        print(len(array_sorted[1]))
 
     for array in [random_array]:  # , pre_sorted_array, reverse_sorted_array]:
         start_time = time.time()
@@ -39,3 +39,5 @@ if __name__ == "__main__":
     n = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
     print(n)
     print(generate_run_array(n))
+
+    is_sorted([])

@@ -15,6 +15,9 @@ def story_sort(arr):
     # merge runs - could be optimised by maintaining a min heap
     # 1. Get all the run_start_idx's and pop the one with the lowest value. append that values run_array value (unless 0?)
     # 2. Repeat step 1 until run_start_idx is empty?
+
+    # TODO this can be improved!  Take the value from the first run_start_idx and keep taking values from it as long as they are less than the next run
+    # basically preferentially take values from the current run as long as they are less than or equal to the next run
     while run_start_idx:
         min_value = arr[run_start_idx[0]]
         min_idx = 0
