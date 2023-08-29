@@ -10,8 +10,9 @@ __pycache__/
 # C extensions
 *.so
 
-# Editor temp files
+# IDE and Editor temp files
 *.*~
+.idea
 
 # Distribution / packaging
 .Python
