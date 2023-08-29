@@ -9,22 +9,26 @@ if __name__ == "__main__":
     # input_array = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
     input_array = [4, 1, 7, 2, 9, 3]
     print("Starting story sort.  Unsorted:\n", input_array)
+    run_array = generate_run_array(input_array)
+    print("Run array:", run_array)
     sorted_array = story_sort(input_array)
     print(sorted_array)  # Output: [1, 2, 3, 4, 7, 9]
     print("Finished story sort")
 
-    random_array = np.random.uniform(low=1, high=100, size=10000000)
+    random_array = np.random.uniform(low=1, high=100, size=100000)
     pre_sorted_array = sorted(random_array)
     reverse_sorted_array = sorted(random_array, reverse=True)
 
-    for array in [random_array]: #, pre_sorted_array, reverse_sorted_array]:
+    print("Finished generating data - starting story_sort")
+    for array in [random_array]:  # , pre_sorted_array, reverse_sorted_array]:
         start_time = time.time()
-        array_sorted = story_sort(array)
+        array_sorted, run_array = generate_run_array(array)
         elapsed_time = time.time() - start_time
         print("StorySort time: {:.2f} seconds".format(elapsed_time))
         assert is_sorted(array_sorted)
+        print(array_sorted[1:5])
 
-    for array in [random_array]: #, pre_sorted_array, reverse_sorted_array]:
+    for array in [random_array]:  # , pre_sorted_array, reverse_sorted_array]:
         start_time = time.time()
         array_sorted = sorted(array)
         elapsed_time = time.time() - start_time

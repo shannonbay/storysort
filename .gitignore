@@ -12,6 +12,7 @@ __pycache__/
 
 # IDE and Editor temp files
 *.*~
+*~
 .idea
 
 # Distribution / packaging
