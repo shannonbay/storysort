@@ -20,15 +20,15 @@ if __name__ == "__main__":
     reverse_sorted_array = sorted(random_array, reverse=True)
 
     print("Finished generating data - starting story_sort")
-    for array in [random_array]: #, pre_sorted_array, reverse_sorted_array]:
+    for array in [random_array]:  # , pre_sorted_array, reverse_sorted_array]:
         start_time = time.time()
         array_sorted, run_array = generate_run_array(array)
         elapsed_time = time.time() - start_time
         print("StorySort time: {:.2f} seconds".format(elapsed_time))
-        #assert is_sorted(array_sorted)
+        # assert is_sorted(array_sorted)
         print(array_sorted[1:5])
 
-    for array in [random_array]: #, pre_sorted_array, reverse_sorted_array]:
+    for array in [random_array]:  # , pre_sorted_array, reverse_sorted_array]:
         start_time = time.time()
         array_sorted = sorted(array)
         elapsed_time = time.time() - start_time

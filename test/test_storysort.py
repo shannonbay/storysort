@@ -18,4 +18,3 @@ def test_story_sort() -> None:
 
 def test_generate_run_array() -> None:
     print(generate_run_array([4, 1, 7, 2, 9, 3]))
-
