@@ -68,6 +68,7 @@ def generate_run_array(input_array):
             found = True
 
         if not found:
+            print(value, " at ", i, " must be a min")
             # For each established run
             for j in range(
                 len(run_mins)
@@ -75,15 +76,14 @@ def generate_run_array(input_array):
                 if (
                     value <= run_mins[j]
                 ):  # find the first run (j) that current value is greater than (or equal to)
+                    print("Inserting at start of existing run")
                     run_mins[j] = value  # update the min for run j
-                    run_array[i] = run_start_idx[
-                        j
-                    ]  # This value will point to the old start
+                    run_array[i] = run_start_idx[j]  # point to the old start
                     run_start_idx[j] = i  # this is the new start idx for the run
                     found = True
+                    break
 
         if not found:
-            # handle case where value is less than existing run maxes
             run_maxes.append(value)  # start a new run
             run_mins.append(value)
             run_indexes.append(i)  # i is now the latest index in run j

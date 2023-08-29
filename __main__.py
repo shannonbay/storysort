@@ -15,18 +15,20 @@ if __name__ == "__main__":
     print(sorted_array)  # Output: [1, 2, 3, 4, 7, 9]
     print("Finished story sort")
 
-    random_array = np.random.uniform(low=1, high=100, size=100000)
+    random_array = np.random.randint(low=1, high=100, size=10)
+    print(random_array)
+
     pre_sorted_array = sorted(random_array)
     reverse_sorted_array = sorted(random_array, reverse=True)
 
     print("Finished generating data - starting story_sort")
     for array in [random_array]:  # , pre_sorted_array, reverse_sorted_array]:
         start_time = time.time()
-        array_sorted, run_array = generate_run_array(array)
+        array_sorted = story_sort(array)
         elapsed_time = time.time() - start_time
         print("StorySort time: {:.2f} seconds".format(elapsed_time))
         assert is_sorted(array_sorted)
-        print(array_sorted[1:5])
+        print(array_sorted)
 
     for array in [random_array]:  # , pre_sorted_array, reverse_sorted_array]:
         start_time = time.time()
