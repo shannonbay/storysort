@@ -1,6 +1,9 @@
 # Story Sort
 A variation of Merge Sort which works by finding all non-consecutive sorted runs and merging them
 
+## Requirements
+Python 3.10
+
 ## Setup
 ```sh
 # Install dependencies
