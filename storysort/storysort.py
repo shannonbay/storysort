@@ -68,20 +68,15 @@ def generate_run_array(input_array):
             found = True
 
         if not found:
-            print(value, " at ", i, " must be a min")
+            j = bisect.bisect_left(run_mins, value)
             # For each established run
-            for j in range(
-                len(run_mins)
-            ):  # this loop can be replaced with a binary search since run_maxes is ordered
-                if (
-                    value <= run_mins[j]
-                ):  # find the first run (j) that current value is greater than (or equal to)
-                    print("Inserting at start of existing run")
-                    run_mins[j] = value  # update the min for run j
-                    run_array[i] = run_start_idx[j]  # point to the old start
-                    run_start_idx[j] = i  # this is the new start idx for the run
-                    found = True
-                    break
+            if j != len(
+                run_mins
+            ):  # find the first run (j) that current value is greater than (or equal to)
+                run_mins[j] = value  # update the min for run j
+                run_array[i] = run_start_idx[j]  # point to the old start
+                run_start_idx[j] = i  # this is the new start idx for the run
+                found = True
 
         if not found:
             run_maxes.append(value)  # start a new run
