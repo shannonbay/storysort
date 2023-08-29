@@ -1,3 +1,6 @@
+import bisect
+
+
 def fib(n: int) -> int:
     if n < 2:
         return n
@@ -42,27 +45,26 @@ def generate_run_array(input_array):
     )  # non-consecutive series of indexes over input_array - Initialize the run_array with 0
     run_maxes = [
         input_array[0]
-    ]  # Keeps track of the current value for each run - maintained in order from highest to lowest
+    ]  # Keeps track of the current value for each run - maintained in order from lowest to highest
     run_mins = [input_array[0]]
     run_indexes = [0]  # Keeps track of the current index for each run
     run_start_idx = [0]
+
+    key_function = lambda x: -x
 
     # For each input value
     for i, value in enumerate(input_array[1:], start=1):
         found = False
 
         # For each established run
-        for j in range(
-            len(run_maxes)
-        ):  # this loop can be replaced with a binary search since run_maxes is ordered
-            if (
-                value >= run_maxes[j]
-            ):  # find the first run (j) that current value is greater than (or equal to)
-                run_maxes[j] = value  # update the max for run j
-                run_array[run_indexes[j]] = i  # run array for run j now points to i
-                run_indexes[j] = i  # i is now the latest index in run j
-                found = True
-                break
+        j = bisect.bisect_left(run_maxes, key_function(value), key=key_function)
+
+        if j != len(run_maxes):
+            run_maxes[j] = value  # update the max for run j
+            run_array[run_indexes[j]] = i  # run array for run j now points to i
+            run_indexes[j] = i  # i is now the latest index in run j
+            found = True
+            break
 
         if not found:
             # For each established run

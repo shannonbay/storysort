@@ -1,4 +1,4 @@
-FROM python:3.8-slim AS base
+FROM python:3.10-slim AS base
 
 # Setup env
 ENV LANG C.UTF-8
@@ -34,5 +34,5 @@ USER appuser
 COPY . .
 
 # Run the executable
-ENTRYPOINT ["python", "-m", "storysort"]
+ENTRYPOINT ["python3.10", "-m", "storysort"]
 CMD ["10"]
