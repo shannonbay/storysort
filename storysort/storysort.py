@@ -27,7 +27,7 @@ def story_sort(arr):
                 min_idx = i
         # update the run_start_idx for the new min_value
         index = run_start_idx.pop(min_idx)
-        if run_array[index] > 0:
+        if run_array[index] > -1:
             run_start_idx.append(run_array[index])
 
         # Return the min_value as the final answer
@@ -37,12 +37,13 @@ def story_sort(arr):
 
 
 def generate_run_array(input_array):
-    run_array = [0] * len(
+    run_array = [-1] * len(
         input_array
-    )  # indexes over input_array - Initialize the run_array with 0
+    )  # non-consecutive series of indexes over input_array - Initialize the run_array with 0
     run_maxes = [
         input_array[0]
     ]  # Keeps track of the current value for each run - maintained in order from highest to lowest
+    run_mins = [input_array[0]]
     run_indexes = [0]  # Keeps track of the current index for each run
     run_start_idx = [0]
 
@@ -64,12 +65,28 @@ def generate_run_array(input_array):
                 break
 
         if not found:
+            # For each established run
+            for j in range(
+                len(run_mins)
+            ):  # this loop can be replaced with a binary search since run_maxes is ordered
+                if (
+                    value <= run_mins[j]
+                ):  # find the first run (j) that current value is greater than (or equal to)
+                    run_mins[j] = value  # update the min for run j
+                    run_array[i] = run_start_idx[
+                        j
+                    ]  # This value will point to the old start
+                    run_start_idx[j] = i  # this is the new start idx for the run
+                    found = True
+                    break
+
+        if not found:
             # handle case where value is less than existing run maxes
             run_maxes.append(value)  # start a new run
+            run_mins.append(value)
             run_indexes.append(i)  # i is now the latest index in run j
             run_start_idx.append(i)
 
-    print("Number of runs: ", len(run_indexes))
     return run_array, run_start_idx
 
 
