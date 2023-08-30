@@ -21,6 +21,12 @@ def test_story_sort() -> None:
     assert res == [1, 1, 2, 2, 3, 9]
     assert is_sorted(res)
 
+    res = story_sort([4, 1, 7, 2, 9, 3, 5, 2, 3])
+    assert is_sorted(res)
+
+    res = story_sort([1, 2, 9, 2, 3, 1])
+    assert is_sorted(res)
+
 
 def test_generate_run_array() -> None:
     run_array, run_start_idx = generate_run_array([4, 1, 7, 2, 9, 3, 5, 2, 3])

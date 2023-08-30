@@ -1,5 +1,7 @@
-# Story Sort
-A variation of Merge Sort which works by finding all non-consecutive sorted runs and merging them
+# Python Scratchpad
+
+* A prime numbers animation and algorithm for isPrime which uses cosine
+* A variation of Patience Sort which works by finding all non-consecutive sorted runs and merging them
 
 ## Requirements
 Python 3.10

@@ -19,8 +19,8 @@ def story_sort(arr):
     # TODO this can be improved!  Take the value from the first run_start_idx and keep taking values from it as long as they are less than the next run
     # basically preferentially take values from the current run as long as they are less than or equal to the next run
     while run_start_idx:
-        min_value = arr[run_start_idx[0]]
-        min_idx = 0
+        min_idx = 0  # the current run_start_idx
+        min_value = arr[run_start_idx[min_idx]]
         # Loop through the rest of the indexes in run_start_idx
         for i in range(1, len(run_start_idx)):
             # Get the current index
@@ -31,10 +31,12 @@ def story_sort(arr):
             if value < min_value:
                 min_value = value
                 min_idx = i
+            else:
+                break
         # update the run_start_idx for the new min_value
         index = run_start_idx.pop(min_idx)
         if run_array[index] > -1:
-            run_start_idx.append(run_array[index])
+            run_start_idx.insert(0, run_array[index])
 
         # Return the min_value as the final answer
         result.append(min_value)
